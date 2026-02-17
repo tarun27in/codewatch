@@ -22,6 +22,18 @@ SKIP_EXTENSIONS = {
     ".lock", ".min.js", ".min.css", ".map",
 }
 
+# Skip test files and templates to reduce false positives
+SKIP_FILE_PATTERNS = [
+    ".test.", ".spec.", "_test.", "_spec.",
+    ".template", ".example", ".sample", ".tmpl",
+]
+
+SKIP_PATH_PATTERNS = [
+    "/test/", "/tests/", "/__test__/", "/__tests__/",
+    "/examples/", "/samples/", "/demo/", "/demos/",
+    "/mock/", "/mocks/", "/fixture/", "/fixtures/", "/stub/", "/stubs/",
+]
+
 SOURCE_EXTENSIONS = {
     ".py", ".js", ".ts", ".jsx", ".tsx", ".go", ".java", ".rs",
     ".rb", ".php", ".cs", ".cpp", ".c", ".h", ".hpp",
@@ -71,6 +83,12 @@ def walk_files(root_path: str, max_files: int = 5000) -> list[dict]:
 
             # Determine file category
             rel_path = str(filepath.relative_to(root))
+
+            # Skip test files and templates to reduce false positives
+            if any(pattern in filename.lower() for pattern in SKIP_FILE_PATTERNS):
+                continue
+            if any(pattern in f"/{rel_path}" for pattern in SKIP_PATH_PATTERNS):
+                continue
             category = "other"
 
             if ext in SOURCE_EXTENSIONS:

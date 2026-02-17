@@ -346,3 +346,4 @@ class JavaScriptAnalyzer(BaseAnalyzer):
                     description=desc,
                     metadata={"vuln_type": "prototype_pollution"},
                 ))
+        return findings
