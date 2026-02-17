@@ -1,0 +1,133 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Theme CSS variables */
+:root {
+  --bg-primary: #F8FAFC;
+  --bg-secondary: #F1F5F9;
+  --bg-tertiary: #E2E8F0;
+  --bg-panel: rgba(248, 250, 252, 0.95);
+  --bg-card: #FFFFFF;
+  --bg-input: #F1F5F9;
+  --bg-hover: #E2E8F0;
+  --border-primary: #CBD5E1;
+  --border-secondary: #E2E8F0;
+  --text-primary: #0F172A;
+  --text-secondary: #475569;
+  --text-muted: #94A3B8;
+  --text-inverse: #FFFFFF;
+  --graph-bg: #F1F5F9;
+  --graph-grid: #CBD5E1;
+  --graph-minimap-bg: #F8FAFC;
+  --graph-minimap-mask: rgba(255,255,255,0.7);
+  --edge-label-bg: rgba(248, 250, 252, 0.85);
+  --node-shadow: 0 1px 3px rgba(0,0,0,0.12);
+}
+
+.dark {
+  --bg-primary: #030712;
+  --bg-secondary: #111827;
+  --bg-tertiary: #1F2937;
+  --bg-panel: rgba(17, 24, 39, 0.95);
+  --bg-card: #1F2937;
+  --bg-input: #1F2937;
+  --bg-hover: #374151;
+  --border-primary: #374151;
+  --border-secondary: #1F2937;
+  --text-primary: #F9FAFB;
+  --text-secondary: #9CA3AF;
+  --text-muted: #6B7280;
+  --text-inverse: #0F172A;
+  --graph-bg: #111827;
+  --graph-grid: #1F2937;
+  --graph-minimap-bg: #030712;
+  --graph-minimap-mask: rgba(0,0,0,0.7);
+  --edge-label-bg: rgba(17, 24, 39, 0.85);
+  --node-shadow: 0 1px 3px rgba(0,0,0,0.4);
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+/* React Flow overrides for dark theme */
+.react-flow__node {
+  font-size: 14px;
+}
+
+.react-flow__edge-text {
+  font-size: 11px;
+}
+
+.react-flow__edge-textbg {
+  fill-opacity: 0.85;
+}
+
+.react-flow__minimap {
+  border-radius: 8px;
+}
+
+/* Highlight matched search nodes */
+.react-flow__node.search-match {
+  box-shadow: 0 0 0 3px #FBBF24, 0 0 20px rgba(251, 191, 36, 0.4);
+  z-index: 10 !important;
+}
+
+.react-flow__node.search-dim {
+  opacity: 0.25;
+}
+
+/* Performance: GPU-accelerate the viewport */
+.react-flow__viewport {
+  will-change: transform;
+}
+
+/* Hover path highlighting */
+.react-flow__node.path-highlight {
+  opacity: 1 !important;
+  filter: brightness(1.15);
+  z-index: 10 !important;
+}
+
+.react-flow__node.path-dim {
+  opacity: 0.15 !important;
+}
+
+/* Smoother node transitions */
+.react-flow__node {
+  transition: opacity 0.2s ease, filter 0.2s ease;
+}
+
+/* Edge transitions for hover highlighting */
+.react-flow__edge {
+  transition: opacity 0.2s ease;
+}
+
+/* Custom scrollbar styling */
+.styled-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.styled-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.styled-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--border-primary);
+  border-radius: 3px;
+}
+
+.styled-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* Firefox scrollbar */
+.styled-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-primary) transparent;
+}
