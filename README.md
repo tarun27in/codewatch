@@ -1,5 +1,5 @@
 <p align="center">
-  <h1 align="center">Security Knowledge Graph</h1>
+  <h1 align="center">CodeWatch</h1>
   <p align="center">
     Scan any codebase. Visualize its security architecture. Find what's exposed.
   </p>
@@ -68,8 +68,8 @@ Point it at any local folder or GitHub repo URL and get an **interactive securit
 ### Option 1: Docker Compose
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/security-knowledge-graph.git
-cd security-knowledge-graph
+git clone https://github.com/tarun27in/codewatch.git
+cd codewatch
 docker compose up
 ```
 
@@ -219,7 +219,7 @@ All endpoints are under `/api`:
 ## Architecture
 
 ```
-security-knowledge-graph/
+codewatch/
 ├── backend/                          # Python FastAPI
 │   ├── app/
 │   │   ├── main.py                   # App setup, CORS, router registration
